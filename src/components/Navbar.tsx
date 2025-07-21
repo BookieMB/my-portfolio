@@ -25,20 +25,20 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <header className="fixed top-4 left-1/2 z-50 w-[95%] max-w-6xl -translate-x-1/2 rounded-full bg-white/80 px-6 py-3 shadow-md backdrop-blur-md dark:bg-[#1e1e1e]/80 transition-all duration-300">
-      <nav className="flex items-center justify-between w-full gap-6">
+    <header className="fixed top-6 left-1/2 z-50 w-[95%] max-w-6xl -translate-x-1/2 rounded-full bg-white/80 px-6 py-4 shadow-md backdrop-blur-md dark:bg-[#1e1e1e]/80 transition-all duration-300">
+      <nav className="flex items-center justify-between w-full">
         {/* Logo */}
-        <div className="text-lg font-semibold tracking-tight pl-4 dark:text-white">
+        <div className="text-lg font-semibold tracking-tight ml-2 dark:text-white">
           Bookie.dev
         </div>
 
         {/* Navigation Links */}
-        <ul className="grid grid-flow-col auto-cols-max gap-6 text-sm font-medium dark:text-gray-200">
-        <li><a href="#home" className="hover:text-blue-600 transition">Home</a></li>
-        <li><a href="#about" className="hover:text-blue-600 transition">About</a></li>
-        <li><a href="#skills" className="hover:text-blue-600 transition">Skills</a></li>
-        <li><a href="#projects" className="hover:text-blue-600 transition">Projects</a></li>
-        <li><a href="#contacts" className="hover:text-blue-600 transition">Contact</a></li>
+        <ul className="flex justify-center gap-14 text-sm font-medium dark:text-gray-200">
+          <li><a href="#home" className="hover:text-blue-600 transition">Home</a></li>
+          <li><a href="#about" className="hover:text-blue-600 transition">About</a></li>
+          <li><a href="#skills" className="hover:text-blue-600 transition">Skills</a></li>
+          <li><a href="#projects" className="hover:text-blue-600 transition">Projects</a></li>
+          <li><a href="#contacts" className="hover:text-blue-600 transition">Contact</a></li>
         </ul>
 
         {/* Theme Toggle */}

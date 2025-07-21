@@ -7,7 +7,7 @@ import Contacts from './components/Contacts';
 
 const App = () => {
   return (
-    <div className="bg-white dark:bg-[#121212]">
+    <div className="flex bg-white dark:bg-[#121212]">
       <Navbar />
 
       <main className="flex flex-col">
