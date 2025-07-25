@@ -33,12 +33,12 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <ul className="flex justify-center gap-14 text-sm font-medium dark:text-gray-200">
-          <li><a href="#home" className="hover:text-blue-600 transition">Home</a></li>
-          <li><a href="#about" className="hover:text-blue-600 transition">About</a></li>
-          <li><a href="#skills" className="hover:text-blue-600 transition">Skills</a></li>
-          <li><a href="#projects" className="hover:text-blue-600 transition">Projects</a></li>
-          <li><a href="#contacts" className="hover:text-blue-600 transition">Contact</a></li>
+        <ul className="flex items-center gap-8 text-sm font-medium text-gray-800 dark:text-gray-200">
+          <li><a href="#home" className="hover:text-blue-500 transition">Home</a></li>
+          <li><a href="#about" className="hover:text-blue-500 transition">About</a></li>
+          <li><a href="#skills" className="hover:text-blue-500 transition">Skills</a></li>
+          <li><a href="#projects" className="hover:text-blue-500 transition">Projects</a></li>
+          <li><a href="#contacts" className="hover:text-blue-500 transition">Contact</a></li>
         </ul>
 
         {/* Theme Toggle */}

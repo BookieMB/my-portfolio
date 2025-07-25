@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -18,9 +19,16 @@ export default function ProjectCard({
   repoLink,
   tech,
 }: ProjectCardProps) {
+  const [imgSrc, setImgSrc] = useState(image);
+
   return (
     <Card className="w-full max-w-md shadow-md transition hover:shadow-lg rounded-2xl">
-      <img src={image} alt={title} className="rounded-t-2xl object-cover h-48 w-full" />
+      <img
+        src={imgSrc}
+        alt={title}
+        className="rounded-t-2xl object-cover h-48 w-full"
+        onError={() => setImgSrc("/fallback.png")} // <- Change to your fallback image path
+      />
       <CardContent className="space-y-3 p-4">
         <h2 className="text-xl font-bold">{title}</h2>
         <p className="text-sm text-muted-foreground">{description}</p>
@@ -39,12 +47,16 @@ export default function ProjectCard({
         <div className="flex justify-end gap-2 pt-2">
           {demoLink && (
             <Button asChild variant="outline" size="sm">
-              <a href={demoLink} target="_blank" rel="noopener noreferrer">Live Demo</a>
+              <a href={demoLink} target="_blank" rel="noopener noreferrer">
+                Live Demo
+              </a>
             </Button>
           )}
           {repoLink && (
             <Button asChild variant="outline" size="sm">
-              <a href={repoLink} target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href={repoLink} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
             </Button>
           )}
         </div>
