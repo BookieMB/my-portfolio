@@ -25,15 +25,14 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <header className="fixed top-6 left-1/2 z-50 w-[95%] max-w-6xl -translate-x-1/2 rounded-full bg-white/80 px-6 py-4 shadow-md backdrop-blur-md dark:bg-[#1e1e1e]/80 transition-all duration-300">
-      <nav className="flex items-center justify-between w-full">
-        {/* Logo */}
-        <div className="text-lg font-semibold tracking-tight ml-2 dark:text-white">
+    <header className="fixed top-0 left-0 z-50 w-full bg-white/70 dark:bg-[#1e1e1e]/70 backdrop-blur-md transition-all duration-300">
+      <nav className="flex items-center justify-between max-w-6xl mx-auto px-6 py-4">
+        <div className="text-lg font-semibold tracking-tight dark:text-white">
           Bookie.dev
         </div>
 
         {/* Navigation Links */}
-        <ul className="flex items-center gap-8 text-sm font-medium text-gray-800 dark:text-gray-200">
+        <ul className="flex items-center gap-6 text-sm font-medium text-gray-800 dark:text-gray-200">
           <li><a href="#home" className="hover:text-blue-500 transition">Home</a></li>
           <li><a href="#about" className="hover:text-blue-500 transition">About</a></li>
           <li><a href="#skills" className="hover:text-blue-500 transition">Skills</a></li>
@@ -44,7 +43,7 @@ const Navbar = () => {
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="rounded-full bg-gray-200 p-2 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="ml-4 rounded-md bg-gray-200 p-2 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 transition"
           aria-label="Toggle dark mode"
         >
           {darkMode ? <Sun size={16} /> : <Moon size={16} />}

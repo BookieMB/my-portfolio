@@ -9,7 +9,7 @@ export function Projects() {
     {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce application with user authentication, product management, shopping cart functionality, and payment integration.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
+      image: "./src/assets/brewguard.png",
       technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
       github: "#",
       demo: "#",
@@ -18,7 +18,7 @@ export function Projects() {
     {
       title: "Task Management App",
       description: "A collaborative task management application with real-time updates, team workspaces, and progress tracking.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
+      image: "./src/assets/brewguard.png",
       technologies: ["Vue.js", "Express.js", "MongoDB", "Socket.io", "CSS3"],
       github: "#",
       demo: "#",
@@ -27,7 +27,7 @@ export function Projects() {
     {
       title: "Weather Dashboard",
       description: "A responsive weather dashboard that displays current conditions and forecasts using external APIs with geolocation support.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop",
+      image: "./src/assets/brewguard.png",
       technologies: ["JavaScript", "REST APIs", "Chart.js", "HTML5", "CSS3"],
       github: "#",
       demo: "#",
@@ -36,7 +36,7 @@ export function Projects() {
     {
       title: "Social Media Clone",
       description: "A social media platform replica with user profiles, posts, comments, likes, and real-time messaging functionality.",
-      image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=500&h=300&fit=crop",
+      image: "./src/assets/brewguard.png",
       technologies: ["React", "Firebase", "Material-UI", "Redux", "TypeScript"],
       github: "#",
       demo: "#",
@@ -45,7 +45,7 @@ export function Projects() {
     {
       title: "Portfolio Website",
       description: "A responsive portfolio website showcasing projects and skills with modern design and smooth animations.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
+      image: "./src/assets/brewguard.png",
       technologies: ["React", "Tailwind CSS", "Framer Motion", "TypeScript"],
       github: "#",
       demo: "#",
@@ -54,7 +54,7 @@ export function Projects() {
     {
       title: "API Documentation Tool",
       description: "A tool for generating and maintaining API documentation with interactive testing capabilities and team collaboration features.",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop",
+      image: "./src/assets/brewguard.png",
       technologies: ["Python", "FastAPI", "React", "PostgreSQL", "Docker"],
       github: "#",
       demo: "#",
@@ -164,3 +164,6 @@ export function Projects() {
     </section>
   );
 }
+
+
+export default Projects;
