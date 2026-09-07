@@ -1,7 +1,6 @@
 import React from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
-import { ImageWithFallback } from './ui/ImageWithFallback';
-import marvsImage from '../assets/marvs-port.webp';
+import bookieImage from '../assets/Bookie.svg';
 
 interface HeroProps {
   scrollTo: (id: string) => void;
@@ -57,12 +56,11 @@ export const Hero: React.FC<HeroProps> = ({ scrollTo }) => {
             {/* Spinning background outline */}
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-zinc-900 bg-slate-200 dark:bg-zinc-850">
-              <ImageWithFallback
-                src={marvsImage}
-                fallbackSrc="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80"
-                alt="Marvin Angelo G. Buquis"
-                className="w-full h-full object-cover object-center scale-105 hover:scale-110 transition-transform duration-500"
+            <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full p-6 overflow-hidden shadow-2xl border-4 border-white dark:border-zinc-900 bg-slate-900 dark:bg-zinc-900 flex items-center justify-center">
+              <img
+                src={bookieImage}
+                alt="Bookie.dev Logo"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>

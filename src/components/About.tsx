@@ -1,6 +1,7 @@
 import React from 'react';
 import { GraduationCap, Award } from 'lucide-react';
-import bookieImage from '../assets/Bookie.svg';
+import { ImageWithFallback } from './ui/ImageWithFallback';
+import marvsImage from '../assets/marvs-port.webp';
 
 export const About: React.FC = () => {
   return (
@@ -45,14 +46,15 @@ export const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Side: Graphic Illustration */}
+        {/* Right Side: Personal Photo (Enlarged) */}
         <div className="flex justify-center">
-          <div className="relative group max-w-sm w-full aspect-square p-8 rounded-3xl bg-slate-100/50 dark:bg-zinc-900/30 border border-slate-200/50 dark:border-zinc-800/40 shadow-xl overflow-hidden hover:border-indigo-500/30 dark:hover:border-indigo-400/30 transition-all duration-500">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <img
-              src={bookieImage}
-              alt="Development Illustration"
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 relative z-10"
+          <div className="relative group max-w-md w-full aspect-[4/5] rounded-3xl overflow-hidden border-2 border-slate-200/60 dark:border-zinc-800/60 shadow-2xl hover:border-indigo-500/40 dark:hover:border-indigo-400/40 transition-all duration-500 bg-slate-100 dark:bg-zinc-900">
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent z-10 pointer-events-none" />
+            <ImageWithFallback
+              src={marvsImage}
+              fallbackSrc="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80"
+              alt="Marvin Angelo G. Buquis"
+              className="w-full h-full object-cover object-top scale-110 group-hover:scale-115 transition-transform duration-700"
             />
           </div>
         </div>
