@@ -16,7 +16,7 @@ export interface ContactResponse {
  * Supports Web3Forms or EmailJS backend APIs.
  */
 export const sendContactMessage = async (data: ContactFormData): Promise<ContactResponse> => {
-  const web3FormsKey = import.meta.env.VITE_WEB3FORMS_KEY;
+  const web3FormsKey = import.meta.env.VITE_WEB3FORMS_KEY || '1dfd47a5-0583-4785-bd74-158cc36c8c53';
   const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const emailjsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;

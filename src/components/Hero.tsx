@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import bookieImage from '../assets/Bookie.svg';
 
@@ -7,10 +7,45 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ scrollTo }) => {
+  const words = ['Marvin Buquis', 'Bookie'];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    let timer: NodeJS.Timeout;
+
+    if (isDeleting) {
+      // Fast backspacing like a terminal keypress
+      timer = setTimeout(() => {
+        setCurrentText((prev) => prev.slice(0, -1));
+      }, 50);
+    } else {
+      if (currentText === currentWord) {
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000);
+      } else {
+        // Realistic terminal keystrokes
+        timer = setTimeout(() => {
+          setCurrentText((prev) => currentWord.slice(0, prev.length + 1));
+        }, 100);
+      }
+    }
+
+    if (isDeleting && currentText === '') {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, wordIndex]);
+
   return (
     <section
       id="hero"
-      className="min-h-[85vh] w-full flex items-center justify-center pt-28 pb-16 px-6 md:px-12 lg:px-20 relative z-10"
+      className="min-h-screen w-full flex items-center justify-center pt-28 pb-16 px-6 md:px-12 lg:px-20 relative z-10"
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12">
         {/* Hero Content */}
@@ -19,10 +54,14 @@ export const Hero: React.FC<HeroProps> = ({ scrollTo }) => {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Available for Opportunities</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-            Hi! I’m <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-400">
-              Marvin Buquis
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight min-h-[2.4em] flex flex-col justify-end md:block">
+            <span>Hi! I’m</span> <br />
+            <span className="inline-flex items-baseline">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-400">
+                {currentText}
+              </span>
+              {/* Terminal Underscore Cursor */}
+              <span className="inline-block w-[0.45em] sm:w-[0.5em] h-[4px] sm:h-[5px] bg-indigo-600 dark:bg-indigo-400 ml-1.5 translate-y-[-2px] animate-pulse rounded-sm shadow-[0_0_8px_rgba(99,102,241,0.6)]" />
             </span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl font-medium text-slate-750 dark:text-zinc-300 max-w-lg leading-relaxed">

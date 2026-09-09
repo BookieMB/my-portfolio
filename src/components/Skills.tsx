@@ -5,7 +5,7 @@ export const Skills: React.FC = () => {
   return (
     <section
       id="skills"
-      className="py-16 px-6 md:px-12 lg:px-20 relative z-10"
+      className="min-h-screen w-full flex items-center justify-center py-24 px-6 md:px-12 lg:px-20 relative z-10"
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 space-y-4">
@@ -79,19 +79,24 @@ export const Skills: React.FC = () => {
               </div>
               <h3 className="font-bold text-lg">Design & Tools</h3>
             </div>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { name: 'Figma', icon: 'devicon-figma-plain colored' },
-                  { name: 'VS Code', icon: 'devicon-vscode-plain colored' },
-                  { name: 'Git', icon: 'devicon-git-plain colored' },
-                  { name: 'GitHub', icon: 'devicon-github-original dark:text-white' }
-                ].map((skill, idx) => (
-                  <div key={idx} className="flex items-center gap-2 bg-slate-100/60 dark:bg-zinc-850/50 p-2.5 rounded-2xl border border-slate-200/20 dark:border-zinc-700/20 hover:scale-[1.03] transition-transform select-none cursor-default">
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { name: 'Figma', icon: 'devicon-figma-plain colored' },
+                { name: 'VS Code', icon: 'devicon-vscode-plain colored' },
+                { name: 'Antigravity', customIcon: <Sparkles className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" /> },
+                { name: 'Git', icon: 'devicon-git-plain colored' },
+                { name: 'GitHub', icon: 'devicon-github-original dark:text-white' }
+              ].map((skill, idx) => (
+                <div key={idx} className="flex items-center gap-2 bg-slate-100/60 dark:bg-zinc-850/50 p-2.5 rounded-2xl border border-slate-200/20 dark:border-zinc-700/20 hover:scale-[1.03] transition-transform select-none cursor-default">
+                  {skill.customIcon ? (
+                    skill.customIcon
+                  ) : (
                     <i className={`${skill.icon} text-2xl shrink-0`} />
-                    <span className="text-xs font-semibold truncate">{skill.name}</span>
-                  </div>
-                ))}
-              </div>
+                  )}
+                  <span className="text-xs font-semibold truncate">{skill.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>

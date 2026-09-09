@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Folder, Github, ExternalLink, X, CheckCircle2 } from 'lucide-react';
 import { ImageWithFallback } from './ui/ImageWithFallback';
 import brewguardImage from '../assets/brewguard.png';
@@ -66,7 +67,7 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="py-16 px-6 md:px-12 lg:px-20 relative z-10"
+      className="min-h-screen w-full flex items-center justify-center py-24 px-6 md:px-12 lg:px-20 relative z-10"
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 space-y-4">
@@ -138,82 +139,103 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Project Details Modal */}
-      {selectedProject && (
+      {selectedProject && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="relative w-full max-w-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+            className="relative w-full max-w-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-3xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden text-slate-900 dark:text-zinc-100"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800 transition-all cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-zinc-950">
-              <ImageWithFallback
-                src={selectedProject.image}
-                fallbackSrc={selectedProject.fallbackImage}
-                alt={selectedProject.title}
-                className="w-full h-full object-cover"
-              />
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-900/95 backdrop-blur shrink-0">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                  {selectedProject.category}
+                </span>
+              </div>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-200 transition-all active:scale-95 cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-4 h-4" />
+                <span>Close</span>
+              </button>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.tags.map((t, i) => (
-                  <span key={i} className="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/30">
-                    {t}
-                  </span>
-                ))}
+            {/* Modal Body */}
+            <div className="p-5 sm:p-8 space-y-6 overflow-y-auto flex-1">
+              <div className="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-zinc-950 border border-slate-200/50 dark:border-zinc-800/50">
+                <ImageWithFallback
+                  src={selectedProject.image}
+                  fallbackSrc={selectedProject.fallbackImage}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{selectedProject.title}</h3>
-              <p className="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed">
-                {selectedProject.longDescription}
-              </p>
-
-              <div className="space-y-2 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Features</h4>
-                <ul className="space-y-2">
-                  {selectedProject.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
-                      <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tags.map((t, i) => (
+                    <span key={i} className="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/30">
+                      {t}
+                    </span>
                   ))}
-                </ul>
-              </div>
+                </div>
 
-              <div className="flex gap-4 pt-4 border-t border-slate-100 dark:border-zinc-800">
-                <a
-                  href={selectedProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-slate-800 dark:text-zinc-100 transition-all"
-                >
-                  <Github className="w-4 h-4" />
-                  <span>Repository</span>
-                </a>
-                {selectedProject.liveUrl && (
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{selectedProject.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed">
+                  {selectedProject.longDescription}
+                </p>
+
+                <div className="space-y-2 pt-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Features</h4>
+                  <ul className="space-y-2">
+                    {selectedProject.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
+                        <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100 dark:border-zinc-800">
                   <a
-                    href={selectedProject.liveUrl}
+                    href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition-all"
+                    className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-slate-800 dark:text-zinc-100 transition-all"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>{selectedProject.liveUrl.includes('researchgate.net') ? 'Research Paper' : 'View Project'}</span>
+                    <Github className="w-4 h-4" />
+                    <span>View GitHub</span>
                   </a>
-                )}
+                  {selectedProject.liveUrl && (
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition-all"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span>{selectedProject.liveUrl.includes('researchgate.net') ? 'Research Paper' : 'View Project'}</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm bg-slate-200 dark:bg-zinc-800/80 hover:bg-slate-300 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 transition-all cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                    <span>Close Window</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );

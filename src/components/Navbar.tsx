@@ -90,24 +90,30 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-16 left-4 right-4 py-4 rounded-3xl border border-white/20 dark:border-zinc-800/50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-xl z-50 animate-in fade-in slide-in-from-top-4 duration-300">
-          <ul className="flex flex-col gap-2 px-4 list-none m-0 p-0">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => scrollTo(item.id)}
-                  className={`w-full text-left px-5 py-3 rounded-2xl text-base font-medium transition-all ${
-                    activeSection === item.id
-                      ? 'bg-indigo-600 text-white'
-                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-zinc-800'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <>
+          <div
+            className="md:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px]"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="md:hidden absolute top-16 left-4 right-4 py-4 rounded-3xl border border-white/20 dark:border-zinc-800/50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-xl z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+            <ul className="flex flex-col gap-2 px-4 list-none m-0 p-0">
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => scrollTo(item.id)}
+                    className={`w-full text-left px-5 py-3 rounded-2xl text-base font-medium transition-all ${
+                      activeSection === item.id
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-zinc-800'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
       )}
     </header>
   );

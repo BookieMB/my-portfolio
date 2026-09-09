@@ -5,7 +5,7 @@ export const Experience: React.FC = () => {
   return (
     <section
       id="experience"
-      className="py-16 px-6 md:px-12 lg:px-20 relative z-10"
+      className="min-h-screen w-full flex items-center justify-center py-24 px-6 md:px-12 lg:px-20 relative z-10"
     >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 space-y-4">
@@ -33,7 +33,7 @@ export const Experience: React.FC = () => {
                   Customer Service Representative I
                 </h3>
                 <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/20">
-                  March 2026 - Present
+                  March 2026 – Present
                 </span>
               </div>
               
@@ -41,10 +41,10 @@ export const Experience: React.FC = () => {
                 Conduent
               </p>
 
-              <ul className="list-disc pl-4 space-y-1 text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                <li>Delivering reliable client support operations, diagnosing inquiries, and handling customer accounts with high precision.</li>
-                <li>Operating custom CRM databases, validating information, and executing workflows in alignment with customer criteria.</li>
-                <li>Honing strong collaborative problem-solving skills under SLA parameters.</li>
+              <ul className="list-disc pl-4 space-y-1.5 text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                <li>Provide reliable support to clients by answering questions and resolving account issues.</li>
+                <li>Accurately check and update customer information using the company's internal system.</li>
+                <li>Develop strong communication and problem-solving skills by helping customers efficiently in a fast-paced environment.</li>
               </ul>
             </div>
           </div>
